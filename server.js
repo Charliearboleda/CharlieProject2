@@ -6,6 +6,7 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
+const Item = require('./models/products.js')
 require('dotenv').config()
 //___________________
 //Port
@@ -40,9 +41,23 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 // Routes
 //___________________
 //localhost:3000
-app.get('/' , (req, res) => {
-  res.send('Hello World!');
+app.get('/StoreUrItems' , (req, res) => {
+  Item.find({}, (err, items)=>{
+    res.render('index.ejs', {
+      Item: items
+    })
+  })
 });
+
+app.get('/StoreUrItems/new', (req,res)=>{
+  res.render('new.ejs')
+})
+
+app.post('/StoreUrItems', (req, res)=>{
+  Item.create(req.body, (err, items)=>{
+    res.send(items)
+  })
+})
 //___________________
 //Listener
 //___________________
