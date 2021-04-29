@@ -5,11 +5,23 @@
     <title></title>
   </head>
   <body>
-    <h1>Index page</h1>
-    <% for(let i = 0; i < items.length; i++){%>
-        <%=items[i].name%>
-        <%=items[i].serialNumber%>
-        <%=items[i].idNumber%>
-  <%  }%>
+    <form action=''>
+    <nav>
+      <input type="submit" name="" value="Sign Up">
+    </nav>
+    </form>
+    <form action=''>
+    <nav>
+      <input type="submit" name="" value="Sign in">
+    </nav>
+    </form>
+    <h1>Home page</h1>
+      <% for (let i = 0; i < items.length; i++){%>
+        <li>
+            <a href="/storeuritems/<%=items[i].id%>">
+            <%=items[i].name%></a></li>
+            <li>Serial Number:<%=items[i].serialNumber%></li>
+            <li>Id Number: <%=items[i].idNumber%></li><br/>
+      <%}%>
   </body>
 </html>
