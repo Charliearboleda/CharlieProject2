@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>edit page</h1>
+    <form  action="/storeuritems/<%=items.id%>?_method=PUT" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" value="<%=items.name%>">
+      <label for="serialNumber">Serial Number:</label>
+      <input type="text" name="serialNumber" value="<%=items.serialNumber%>">
+      <label for="idNumber">Id Number:</label>
+      <input type="text" name="idNumber" value="<%=items.idNumber%>">
+      <input type="submit" value="Confirm Changes">
+    </form>
+
+    <button type="button" name="button">
+      <a href="/storeuritems">StoreUrItems</a>
+    </button>
+  </body>
+</html>

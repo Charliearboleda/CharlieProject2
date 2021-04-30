@@ -4,9 +4,9 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
-const app = express ();
+const app = express()
 const db = mongoose.connection;
-const Item = require('./models/products.js')
+
 require('dotenv').config()
 //___________________
 //Port
@@ -39,35 +39,19 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
 // Routes
+const itemsController = require('./controller/item_controller.js')
+app.use('/storeuritems', itemsController)
+const userController = require('./controller/users_controller.js')
+app.use('/users', userController)
+const sessionsController = require('./controller/sessions_controller.js')
+app.use('/sessions', sessionsController)
+
+app.get('/', (req,res)=>{
+  res.redirect('/storeuritems')
+})
 //___________________
 //localhost:3000
-app.get('/storeuritems' , (req, res) => {
-  Item.find({}, (err, items)=>{
-    res.render('index.ejs', {
-      items: items
-    })
-  })
-});
 
-app.get('/StoreUrItems/new', (req,res)=>{
-  res.render('new.ejs')
-})
-
-app.post('/storeuritems', (req, res)=>{
-  Item.create(req.body, (err, items)=>{
-    res.send(items)
-  })
-})
-
-
-
-app.get('/storeuritems/:id', (req, res)=>{
-  Item.findById(req.params.id, (error, items)=>{
-    res.render('show.ejs', {
-      items:items
-    })
-  })
-})
 //___________________
 //Listener
 //___________________
