@@ -5,6 +5,16 @@
     <title></title>
   </head>
   <body>
+    <%if (currentUser) {%>
+      <li>Welcome <%=currentUser.username%></li>
+
+  <form action="/sessions?_method=DELETE" method="POST">
+    <input type="submit" name="" value="Log Out">
+  </form>
+  <%} else {%>
+      <li> <a href="/users/new">Sign Up</a></li>
+      <li><a href="/sessions/new">Log In</a></li>
+  <%  } %>
     <h1>create new Item</h1>
     <form action="/StoreUrItems" method="POST">
       Name: <li><input type="text" name="name"></li><br/>

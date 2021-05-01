@@ -4,10 +4,12 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
+const session = require('express-session')
+require('dotenv').config()
 const app = express()
 const db = mongoose.connection;
 
-require('dotenv').config()
+
 //___________________
 //Port
 //___________________
@@ -21,7 +23,8 @@ const MONGODB_URI = process.env.MONGODB_URI;
 // Connect to Mongo &
 // Fix Depreciation Warnings from Mongoose
 // May or may not need these depending on your Mongoose version
-mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
+mongoose.connect(MONGODB_URI , { useNewUrlParser: true, useUnifiedTopology: true,
+  createIndexes:true, useFindAndModify: false }
 );
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
@@ -37,6 +40,15 @@ app.use(express.urlencoded({ extended: false }));// extended: false - does not a
 app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
+
+app.use(
+  session({
+    secret: process.env.SECRET, //a random string do not copy this value or your stuff will get hacked
+    resave: false, // default more info: https://www.npmjs.com/package/express-session#resave
+    saveUninitialized: false // default  more info: https://www.npmjs.com/package/express-session#resave
+  })
+)
+
 //___________________
 // Routes
 const itemsController = require('./controller/item_controller.js')

@@ -1,8 +1,8 @@
 {
   "name": "charlie-arboleda-project2",
   "version": "1.0.0",
-  "engines":{
-    "nodes":"14.16.0"
+  "engines": {
+    "nodes": "14.16.0"
   },
   "description": "",
   "main": "server.js",
@@ -17,10 +17,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "method-override": "^3.0.0",
-    "mongoose": "^5.12.6"
+    "mongoose": "^5.12.6",
+    "session": "^0.1.0",
+    "static": "^2.0.0"
   }
 }
