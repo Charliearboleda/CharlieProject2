@@ -14,13 +14,13 @@ return next()
 }
 }
 
-items.get('/new', (req, res)=>{
+items.get('/new', isAuthenticated, (req, res)=>{
   res.render('items/new.ejs', {
     currentUser: req.session.currentUser
   })
 })
 
-items.get('/:id/edit', (req, res)=>{
+items.get('/:id/edit', isAuthenticated, (req, res)=>{
   Item.findById(req.params.id, (err, items)=>{
     res.render('items/edit.ejs', {
       items: items,
@@ -61,7 +61,7 @@ items.post('/',(req, res)=>{
   })
 })
 
-items.get('/',(req,res)=>{
+items.get('/', isAuthenticated,(req,res)=>{
   Item.find({},(err, items)=>[
     res.render('items/index.ejs', {
       items:items,

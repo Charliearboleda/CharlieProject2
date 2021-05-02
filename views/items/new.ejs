@@ -15,11 +15,21 @@
       <li> <a href="/users/new">Sign Up</a></li>
       <li><a href="/sessions/new">Log In</a></li>
   <%  } %>
+  <a href="/storeuritems">Home</a>
     <h1>create new Item</h1>
     <form action="/StoreUrItems" method="POST">
       Name: <li><input type="text" name="name"></li><br/>
       serial Number: <li><input type="text" name="serialNumber"></li><br/>
       Id Number: <li><input type="text" name="idNumber"></li><br/>
+      Image: <li>
+        <input type="img" name="img">
+      </li>
+      Description: <li>
+        <input type="text" name="description">
+      </li>
+      Price: <li>
+          <input type="text" name="price">
+      </li>
       <input type="submit" value="Log new item">
     </form>
   </body>
