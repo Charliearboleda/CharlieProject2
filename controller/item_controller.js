@@ -57,11 +57,15 @@ items.put('/:id', (req, res)=>{
 
 items.post('/',isAuthenticated, (req, res)=>{
   console.log(req.body, "this req.body")
-  let formdata = req.body
-formdata.createdby = req.session.currentUser.username
-console.log(formdata, "this is formdata")
+
   Item.create(req.body, (err, items)=>{
-    res.redirect('/storeuritems')
+    if (err) {
+      console.log(err)
+    }else {
+      console.log(items)
+      res.redirect('/storeuritems')
+    }
+
   })
 })
 

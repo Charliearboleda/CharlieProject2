@@ -7,7 +7,8 @@ const itemSchema = new mongoose.Schema({
   img:String,
   description: String,
   price: String,
-  createdby:{type: String}
+  createdby:String,
+
 })
 
 const Item = mongoose.model('Item', itemSchema)
