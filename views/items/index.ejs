@@ -16,13 +16,13 @@
       <li><a href="/sessions/new">Log In</a></li>
   <%  } %>
     <h1>Home page</h1>
-
+        
       <% for (let i = 0; i < items.length; i++){%>
         <li>
             <a href="/storeuritems/<%=items[i].id%>">
             <%=items[i].name%></a></li>
             <img src="<%=items[i].img%>" alt="">
-            
+
             <br/>
       <%}%>
       <br/>

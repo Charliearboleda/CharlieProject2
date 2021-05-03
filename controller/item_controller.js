@@ -55,19 +55,24 @@ items.put('/:id', (req, res)=>{
   })
 })
 
-items.post('/',(req, res)=>{
+items.post('/',isAuthenticated, (req, res)=>{
+  console.log(req.body, "this req.body")
+  let formdata = req.body
+formdata.createdby = req.session.currentUser.username
+console.log(formdata, "this is formdata")
   Item.create(req.body, (err, items)=>{
     res.redirect('/storeuritems')
   })
 })
 
 items.get('/', isAuthenticated,(req,res)=>{
-  Item.find({},(err, items)=>[
+  Item.find({createdby:req.session.currentUser.username},(err, items)=>{
+    console.log(items)
     res.render('items/index.ejs', {
       items:items,
       currentUser: req.session.currentUser
     })
-  ])
+  })
 })
 
 module.exports = items
