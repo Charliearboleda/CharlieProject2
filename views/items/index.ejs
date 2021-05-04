@@ -3,29 +3,111 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+    .container{
+            display:flex;
+            width: 100%;
+             flex-wrap: wrap;
+             justify-content: space-between;
+
+          }
+          body{
+            background-color: #FAF0E6;
+          }
+          .header{
+  display:flex;
+  width: 100%;
+  background-color: #FFEBCD;
+  border: 2px solid black;
+  font-family: 'Fugaz One', cursive;
+  margin-top: 20px;
+  justify-content: center;
+  list-style-type: none;
+
+}
+.middle{
+  display:flex;
+
+  background-color: #FFEBCD;
+  border: 2px solid black;
+  font-family: 'Fugaz One', cursive;
+  margin-top: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-decoration-style: none;
+  padding: 10px;
+  margin: 20px;
+}
+#line{
+    text-decoration-line: none;
+    color:black;
+}
+.img{
+  width: 240px;
+}
+.items {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+}
+.button {
+  display: flex;
+  justify-content: center;
+  background-color: #FFEBCD;
+  margin-top: 20px;
+  font-size: 20px;
+}
+.btncreate {
+  display: flex;
+  justify-content: center;
+
+}
+#linelogout{
+background-color: #FFEBCD;
+}
+    </style>
   </head>
   <body>
+    <div class="header">
+
     <%if (currentUser) {%>
       <li>Welcome <%=currentUser.username%></li>
 
   <form action="/sessions?_method=DELETE" method="POST">
-    <input type="submit" name="" value="Log Out">
+    <input id='linelogout'type="submit" name="" value="Log Out">
   </form>
   <%} else {%>
       <li> <a href="/users/new">Sign Up</a></li>
       <li><a href="/sessions/new">Log In</a></li>
   <%  } %>
-    <h1>Home page</h1>
-        
-      <% for (let i = 0; i < items.length; i++){%>
-        <li>
-            <a href="/storeuritems/<%=items[i].id%>">
-            <%=items[i].name%></a></li>
-            <img src="<%=items[i].img%>" alt="">
 
-            <br/>
+
+    </div>
+    <div class='header'>
+    <h1><%=currentUser.username%> Items</h1><br></br>
+
+    </div>
+    <div class="btncreate">
+    <button class='button'><a id='line'href="/storeuritems/new">Create New Item</a></button><br></br>
+  </div>
+      <div class='container'>
+        <ul class='items'>
+      <% for (let i = 0; i < items.length; i++){%>
+        <div class='middle'>
+        <li>
+            <a id='line'href="/storeuritems/<%=items[i].id%>">
+              <img class='img'src="<%=items[i].img%>" alt="">
+            </a>
+
+
+          </li>  <br/>
+          </div>
       <%}%>
+</ul>
       <br/>
-      <a href="/storeuritems/new">Create New Item</a>
+
+    </div>
   </body>
 </html>

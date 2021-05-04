@@ -3,17 +3,61 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+
+  #line{
+      text-decoration-line: none;
+      color:black;
+      font-family: 'Fugaz One', cursive;
+  }
+  .button {
+    display: flex;
+    justify-content: center;
+    background-color: #FFEBCD;
+    margin-top: 20px;
+    font-size: 16px;
+    font-family: 'Fugaz One', cursive;
+  }
+  .middle{
+    display:flex;
+
+    background-color: #FFEBCD;
+    border: 2px solid black;
+    font-family: 'Fugaz One', cursive;
+    margin-top: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-decoration-style: none;
+    padding: 10px;
+    margin: 20px;
+
+  }
+  body{
+  background-color: #FAF0E6;
+  }
+.container{
+  display: flex;
+  justify-content: center;
+  color:black;
+  font-family: 'Fugaz One', cursive;
+
+}
+    </style>
   </head>
   <body>
-    <a href="/storeuritems">StoreUrItems</a>
-
-    <h1>Sign Up</h1>
+    <button class='button'><a id='line'href="/storeuritems">Home Page</a></button>
+    <div class="container">
+     <h1>Sign Up</h1>
+     </div>
+     <div class='middle'>
     <form action="/users" method="POST">
       <label for="name">User Name:</label>
       <input type="text" name="username">
       <label for="password">Password:</label>
       <input type="password" name="password">
-      <input type="submit" value="Submit">
+      <input id='line'type="submit" value="Submit">
     </form>
+    </div>
+
   </body>
 </html>

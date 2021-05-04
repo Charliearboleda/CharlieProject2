@@ -3,43 +3,125 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+    .container{
+            display:flex;
+            width: 100%;
+             flex-wrap: wrap;
+             justify-content: space-between;
+             list-style-type: none;
+
+
+          }
+          body{
+            background-color: #FAF0E6;
+          }
+          .header{
+  display:flex;
+  width: 100%;
+  background-color: #FFEBCD;
+  border: 2px solid black;
+  font-family: 'Fugaz One', cursive;
+  margin-top: 20px;
+  justify-content: center;
+  list-style-type: none;
+
+}
+.middle{
+  display:flex;
+
+  background-color: #FFEBCD;
+  border: 2px solid black;
+  font-family: 'Fugaz One', cursive;
+  margin-top: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 20px;
+
+
+}
+li{
+  list-style-type: none;
+}
+#line{
+    text-decoration-line: none;
+    color:black;
+}
+.img{
+  width: 280px;
+}
+.items {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+}
+.button {
+  display: flex;
+  justify-content: center;
+  background-color: #FFEBCD;
+  margin-top: 20px;
+  font-size: 20px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.btncreate {
+  display: flex;
+  justify-content: center;
+
+}
+#linelogout{
+background-color: #FFEBCD;
+}
+
+    </style>
   </head>
   <body>
+    <div class='header'>
     <%if (currentUser) {%>
       <li>Welcome <%=currentUser.username%></li>
 
   <form action="/sessions?_method=DELETE" method="POST">
-    <input type="submit" name="" value="Log Out">
+    <input id='linelogout'type="submit" name="" value="Log Out">
   </form>
   <%} else {%>
       <li> <a href="/users/new">Sign Up</a></li>
       <li><a href="/sessions/new">Log In</a></li>
   <%  } %>
+</div>
+<div class='header'>
     <h1>show page</h1>
+  </div>
+
+    <button class='button' type='button'>
+    <a id='line'href="/storeuritems">Home Page</a></button>
+
+  <div class='middle'>
     <ul>
       <li>Item:<%=items.name%></li>
-      <img src="<%=items.img%>" alt="">
+      <img class='img'src="<%=items.img%>" alt="">
       <li>Serial Number:<%=items.serialNumber%></li>
       <li>Id Number:<%=items.idNumber%></li>
       <li>Description: <%=items.description%></li>
       <li>Price: <%=items.price%></li>
 
     </ul>
+</div>
 
+<button class='button' type="button" name="button">
+<a id='line'href="/storeuritems/<%=items.id%>/edit">Edit</a>
 
-<button type="button" name="button">
-<a href="/storeuritems/<%=items.id%>/edit">Edit</a>
-
-</button><br><br/>
-
+</button class='button'><br><br/>
+<div class='buttonpostion'>
 <form action="/storeuritems/<%=items.id%>?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE"/>
+        <input class='button'type="submit" value="DELETE"/>
       </form><br/>
+</div>
 
 
 
 
-    <button type='button'>
-    <a href="/storeuritems">StoreUrItems</a></button>
   </body>
 </html>

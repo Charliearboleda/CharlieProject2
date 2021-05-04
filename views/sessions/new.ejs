@@ -3,9 +3,52 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+      #line{
+          text-decoration-line: none;
+          color:black;
+          font-family: 'Fugaz One', cursive;
+      }
+      .button {
+        display: flex;
+        justify-content: center;
+        background-color: #FFEBCD;
+        margin-top: 20px;
+        font-size: 16px;
+        font-family: 'Fugaz One', cursive;
+      }
+      .middle{
+        display:flex;
+
+        background-color: #FFEBCD;
+        border: 2px solid black;
+        font-family: 'Fugaz One', cursive;
+        margin-top: 20px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        text-decoration-style: none;
+        padding: 10px;
+        margin: 20px;
+
+      }
+      body{
+      background-color: #FAF0E6;
+      }
+    .container{
+      display: flex;
+      justify-content: center;
+      color:black;
+      font-family: 'Fugaz One', cursive;
+
+    }
+    </style>
   </head>
   <body>
+    <button class='button'><a id='line'href="/users/new">Sign Up</a></button>
+    <div class='container'>
     <h1>Log In</h1>
+    </div>
+    <div class='middle'>
     <form action="/sessions" method="POST">
       <label for="name">User Name:</label>
       <input type="text" name="username">
@@ -13,7 +56,8 @@
       <input type="password" name="password">
       <input type="submit" value="Submit">
 
-<a href="/users/new">Sign Up</a>
+
     </form>
+    </div>
   </body>
 </html>

@@ -2,21 +2,102 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Create Item Page</title>
+    <style>
+    .container{
+            display:flex;
+            width: 100%;
+             flex-wrap: wrap;
+             justify-content: space-between;
+
+          }
+          body{
+            background-color: #FAF0E6;
+          }
+          .header{
+  display:flex;
+  width: 100%;
+  background-color: #FFEBCD;
+  border: 2px solid black;
+  font-family: 'Fugaz One', cursive;
+  margin-top: 20px;
+  justify-content: center;
+  list-style-type: none;
+
+}
+.middle{
+  display:flex;
+
+  background-color: #FFEBCD;
+  border: 2px solid black;
+  font-family: 'Fugaz One', cursive;
+  margin-top: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 10px;
+  margin: 20px;
+}
+#line{
+    text-decoration-line: none;
+    color:black;
+}
+.img{
+  width: 140px;
+}
+.items {
+  display: flex;
+  list-style-type: none;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+}
+.button {
+  display: flex;
+  justify-content: center;
+  background-color: #FFEBCD;
+  margin-top: 20px;
+  font-size: 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.button1 {
+  display: flex;
+  justify-content: center;
+  background-color: #FFEBCD;
+
+
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.btncreate {
+  display: flex;
+  justify-content: center;
+
+}
+#linelogout{
+background-color: #FFEBCD;
+}
+    </style>
   </head>
   <body>
+    <div class='header'>
     <%if (currentUser) {%>
       <li>Welcome <%=currentUser.username%></li>
 
   <form action="/sessions?_method=DELETE" method="POST">
-    <input type="submit" name="" value="Log Out">
+    <input id='linelogout'type="submit" name="" value="Log Out">
   </form>
   <%} else {%>
       <li> <a href="/users/new">Sign Up</a></li>
       <li><a href="/sessions/new">Log In</a></li>
   <%  } %>
-  <a href="/storeuritems">Home</a>
+</div>
+  <button class='button'><a id='line'href="/storeuritems">Home</a></button>
+  <div class='header'>
     <h1>create new Item</h1>
+  </div>
+  <div class='middle'>
     <form action="/StoreUrItems" method="POST">
       Name: <li><input type="text" name="name"></li><br/>
       serial Number: <li><input type="text" name="serialNumber"></li><br/>
@@ -31,7 +112,8 @@
           <input type="text" name="price">
       </li>
     <input type="hidden" name="createdby" value="<%=currentUser.username%>">
-      <input type="submit" value="Log new item">
+      <input class='button1'type="submit" value="Log new item">
     </form>
+  </div>
   </body>
 </html>
